@@ -1,13 +1,13 @@
-;$(document).ready(($) =>{
+;$(document).ready(($ =>{
     let depth = 20;
-    const init = () => {
+    function init() {
         let type = 'random',
             interval,
             start = false;
 
         draw(type);
 
-        $('.button-success').off().click(() => {
+        $('.button-success').off().click(function() {
             if(start) {
                 this.textContent = "Start";
                 clearInterval(interval);
@@ -16,7 +16,7 @@
             else {
                 this.textContent = "Stop";
                 start = true;
-                let $casillas = $('.casilla');
+                const $casillas = $('.casilla');
                 interval = setInterval(() => {
                     $casillas.map((i, casilla) => {            
                         return neighbors(casilla.id)
@@ -35,12 +35,14 @@
         });
 
         $('.button-random').off().click(() => {
+            if (start) $('.button-success').click();
             type = 'random';
             draw(type);
         });
 
 
         $('.button-grid').off().click(() => {
+            if (start) $('.button-success').click();
             type = 'grid';
             draw(type);
         });
@@ -51,13 +53,13 @@
         });
     }
 
-    const countAlives = casilla => {
+    function countAlives(casilla) {
         if (typeof casilla !== 'undefined')
             return $('#' + casilla).hasClass('alive') ? 1 : 0;
         return 0;
     };
 
-    const neighbors = id => {
+    function neighbors(id) {
         const actual = id.split('-');
         const coords = [[-1,-1], [-1,0], [-1,1],
                         [0,-1],          [0,1],
@@ -70,7 +72,7 @@
         });
     };
 
-    const draw = type => {
+    function draw(type) {
         let isAlive = (type === 'random') ? Math.round(Math.random()) : true,
             newDivIn,
             newDivOut;
@@ -93,4 +95,4 @@
     init();
 
 
-}(jQuery));
+})(jQuery));
