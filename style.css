@@ -1,0 +1,46 @@
+.fila {
+  display:table-row;
+}
+
+.casilla {    
+    width: 15px;
+    height: 15px;
+    margin: 1px;
+    float: left;
+}
+
+.alive {
+    background: #118811;
+}
+
+#contenedor, .but {
+    display: table;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    float: left;    
+}
+
+.button-success {
+    background: rgb(66, 184, 221);
+}
+
+.button-reset {
+    background: rgb(221, 84, 66);
+}
+
+.button-random {
+    background: rgb(22, 84, 66);
+}
+
+.button-grid {
+    background: rgb(221, 221, 66);
+}
